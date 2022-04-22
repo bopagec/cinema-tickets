@@ -8,7 +8,7 @@ import java.util.List;
 public class MaxTicketSpecification extends AbstractSpecification<List<TicketTypeRequest>> {
     @Override
     public boolean test(List<TicketTypeRequest> requests) {
-        if (requests.stream().map(TicketTypeRequest::getNoOfTickets).count() > 20) {
+        if (requests.stream().mapToInt(value -> value.getNoOfTickets()).sum() > 20) {
             throw new InvalidPurchaseException("Only a maximum of 20 tickets that can be purchased at a time.");
         }
 

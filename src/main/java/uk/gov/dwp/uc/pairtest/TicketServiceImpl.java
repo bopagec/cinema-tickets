@@ -10,7 +10,6 @@ import uk.gov.dwp.uc.pairtest.rules.ChildAndInfantTicketSpecification;
 import uk.gov.dwp.uc.pairtest.rules.MaxTicketSpecification;
 
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 @Slf4j
 public class TicketServiceImpl implements TicketService {
@@ -24,17 +23,31 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public void purchaseTickets(Long accountId, TicketTypeRequest... ticketTypeRequests) throws InvalidPurchaseException {
-        boolean isValidTicketRequest = false;
+        boolean isValidTicketRequest = new ChildAndInfantTicketSpecification()
+                .and(new MaxTicketSpecification())
+                .test(Arrays.asList(ticketTypeRequests));
 
-        try{
-            isValidTicketRequest = new ChildAndInfantTicketSpecification().and(new MaxTicketSpecification()).test(Arrays.asList(ticketTypeRequests));
-        }catch (InvalidPurchaseException e){
-            throw e;
-        }
-
-        if(isValidTicketRequest){
+        if (isValidTicketRequest) {
+            int totalPrice = calculateTotalPrice(ticketTypeRequests);
             log.info("purchasing ticket: {}, {}", accountId, ticketTypeRequests);
-        }
+            ticketPaymentService.makePayment(accountId, totalPrice);
 
+            log.info("reserving seats: {}, {}", accountId, ticketTypeRequests);
+            int seatsToAllocate = calculateTotalSeatsToAllocate(ticketTypeRequests);
+            seatReservationService.reserveSeat(accountId, seatsToAllocate);
+        }
+    }
+
+    private int calculateTotalPrice(TicketTypeRequest... requests) {
+        return Arrays.stream(requests)
+                .mapToInt(value -> value.getNoOfTickets() * value.getTicketType().getPrice())
+                .sum();
+    }
+
+    private int calculateTotalSeatsToAllocate(TicketTypeRequest... requests) {
+        return Arrays.stream(requests)
+                .filter(ticketTypeRequest -> !ticketTypeRequest.getTicketType().equals(TicketTypeRequest.Type.INFANT))
+                .mapToInt(value -> value.getNoOfTickets())
+                .sum();
     }
 }

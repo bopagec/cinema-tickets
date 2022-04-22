@@ -1,6 +1,8 @@
 package uk.gov.dwp.uc.pairtest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +19,8 @@ public class TicketPurchaseController {
     private TicketService ticketService;
 
     @PostMapping("/ticket")
-    public String purchaseTicket(@Valid @RequestBody PurchaseRequest request) {
+    public ResponseEntity<Object> purchaseTicket(@Valid @RequestBody PurchaseRequest request) {
         ticketService.purchaseTickets(request.getAccountId(), request.getTickets());
-        return "done";
+        return new ResponseEntity<>("purchase success!", HttpStatus.OK);
     }
 }

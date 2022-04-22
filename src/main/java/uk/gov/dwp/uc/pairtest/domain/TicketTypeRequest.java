@@ -1,8 +1,11 @@
 package uk.gov.dwp.uc.pairtest.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
+
+import javax.validation.constraints.Min;
 
 /**
  * Immutable Object
@@ -10,6 +13,7 @@ import lombok.ToString;
 @ToString
 public class TicketTypeRequest {
 
+    @Min(value = 1, message = "number of tickets cannot be less than 1")
     private int noOfTickets;
     private Type type;
 
@@ -29,8 +33,7 @@ public class TicketTypeRequest {
     @AllArgsConstructor
     @Getter
     public enum Type {
-        ADULT(20.0), CHILD(10.0), INFANT(0.0);
-        private double price;
+        ADULT(20), CHILD(10), INFANT(0);
+        private int price;
     }
-
 }
