@@ -29,10 +29,10 @@ public class TicketServiceImpl implements TicketService {
 
         if (isValidTicketRequest) {
             int totalPrice = calculateTotalPrice(ticketTypeRequests);
-            log.info("purchasing ticket: {}, {}", accountId, ticketTypeRequests);
+            log.info("purchasing ticket, accountId: {}, totalPrice: {}", accountId, totalPrice);
             ticketPaymentService.makePayment(accountId, totalPrice);
 
-            log.info("reserving seats: {}, {}", accountId, ticketTypeRequests);
+            log.info("reserving seats, accountId: {}, request: {}", accountId, ticketTypeRequests);
             int seatsToAllocate = calculateTotalSeatsToAllocate(ticketTypeRequests);
             seatReservationService.reserveSeat(accountId, seatsToAllocate);
         }

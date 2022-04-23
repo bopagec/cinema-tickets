@@ -9,8 +9,6 @@ import javax.validation.constraints.NotNull;
  * Immutable Object
  */
 @ToString
-@AllArgsConstructor
-@NoArgsConstructor
 public class TicketTypeRequest {
 
     @Min(value = 1, message = "number of tickets cannot be less than 1")
