@@ -65,8 +65,8 @@ public class TicketServiceImplTest {
     @Test
     public void purchaseMoreThan20Tickets_ThrowsInvalidPurchaseException() {
         TicketTypeRequest[] requestArray = ticketTypeRequestFixture
-                .createChildTicket(5)
-                .createInfantTicket(6)
+                .createChildTicket(11)
+                .createInfantTicket(6) // this ticket is free and no need to purchase.
                 .createAdultTicket(10)
                 .getRequestArray();
 
@@ -75,6 +75,19 @@ public class TicketServiceImplTest {
         });
 
         Assertions.assertEquals("Only a maximum of 20 tickets that can be purchased at a time.", exception.getMessage());
+    }
+
+    @Test
+    public void infantTicketsShouldNotContributeTo_MaximumTicketsToBuy() {
+        TicketTypeRequest[] requestArray = ticketTypeRequestFixture
+                .createChildTicket(10) // should purchase
+                .createInfantTicket(6) // this ticket is free and no need to purchase.
+                .createAdultTicket(10) // should purchase
+                .getRequestArray();
+
+        ticketService.purchaseTickets(1l, requestArray);
+        verify(ticketPaymentService, times(1)).makePayment(anyLong(), anyInt());
+        verify(seatReservationService, times(1)).reserveSeat(anyLong(), anyInt());
     }
 
     @Test

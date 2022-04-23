@@ -29,7 +29,7 @@ public class TicketServiceImpl implements TicketService {
 
         if (isValidTicketRequest) {
             int totalPrice = calculateTotalPrice(ticketTypeRequests);
-            log.info("purchasing ticket, accountId: {}, totalPrice: {}", accountId, totalPrice);
+            log.info("purchasing ticket, accountId: {}, totalPrice: {}, request: {}", accountId, totalPrice, ticketTypeRequests);
             ticketPaymentService.makePayment(accountId, totalPrice);
 
             log.info("reserving seats, accountId: {}, request: {}", accountId, ticketTypeRequests);
