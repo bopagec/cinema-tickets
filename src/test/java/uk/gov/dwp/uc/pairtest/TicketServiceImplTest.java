@@ -59,7 +59,7 @@ public class TicketServiceImplTest {
             ticketService.purchaseTickets(1l, requestArray);
         });
 
-        Assertions.assertEquals("Child and Infant tickets cannot be purchased without purchasing an Adult ticket.", exception.getMessage());
+        Assertions.assertEquals("Child or Infant tickets cannot be purchased without purchasing an Adult ticket.", exception.getMessage());
     }
 
     @Test
@@ -74,7 +74,7 @@ public class TicketServiceImplTest {
             ticketService.purchaseTickets(1l, requestArray);
         });
 
-        Assertions.assertEquals("Only a maximum of 20 tickets that can be purchased at a time.", exception.getMessage());
+        Assertions.assertEquals("Only a maximum of 20 tickets that can be purchased at a time exclude infant tickets.", exception.getMessage());
     }
 
     @Test

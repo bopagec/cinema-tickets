@@ -50,3 +50,31 @@ Provide a working implementation of a TicketService that:
 - Calculates the correct no of seats to reserve and makes a seat reservation request to the SeatReservationService.  
 - Rejects any invalid ticket purchase requests. It is up to you to identify what should be deemed as an invalid purchase request.
 
+## Implementation
+Some notes
+
+- usage of Specification Design Pattern to support Business Rules
+- updated the pom to use Spring Boot to create a Micro Service to support the solution
+- all JUnit Tests cases to prove the behaviour of the application
+- usage of lombok to remove boilerplate codes
+- usage of spring validations
+- purchase request for postman
+```json
+{
+    "accountId": 1,
+    "tickets": [
+        {
+            "noOfTickets": 10,
+            "type": "ADULT"
+        },
+        {
+            "noOfTickets": 10,
+            "type": "CHILD"
+        },
+        {
+            "noOfTickets": 2,
+            "type": "INFANT"
+        }
+    ]
+}
+```
