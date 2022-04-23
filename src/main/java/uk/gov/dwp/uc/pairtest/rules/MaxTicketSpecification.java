@@ -15,7 +15,7 @@ public class MaxTicketSpecification extends AbstractSpecification<List<TicketTyp
                 .mapToInt(request -> request.getNoOfTickets()).sum();
 
         if (ticketsToPurchase > 20) {
-            throw new InvalidPurchaseException("Only a maximum of 20 tickets that can be purchased at a time excluding child and infant tickets.");
+            throw new InvalidPurchaseException("Only a maximum of 20 tickets that can be purchased at a time exclude infant tickets.");
         }
 
         return true;

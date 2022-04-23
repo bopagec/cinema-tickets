@@ -20,7 +20,7 @@ public class ChildAndInfantTicketSpecification extends AbstractSpecification<Lis
                 .mapToLong(entry -> entry.getValue()).sum();
 
         if (childAndInfantTickets > 0 && ticketCountByType.get(Type.ADULT) == null || ticketCountByType.get(Type.ADULT) <= 0) {
-            throw new InvalidPurchaseException("Child and Infant tickets cannot be purchased without purchasing an Adult ticket.");
+            throw new InvalidPurchaseException("Child or Infant tickets cannot be purchased without purchasing an Adult ticket.");
         }
 
         return true;
