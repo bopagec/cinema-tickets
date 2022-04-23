@@ -47,7 +47,7 @@ class TicketPurchaseControllerTest {
                 .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentType("text/plain;charset=UTF-8"))
-                .andExpect(content().string("Ticket purchase request is not a valid one"));
+                .andExpect(content().string("Ticket purchase failed. Method Argument Not Valid"));
     }
 
     @Test

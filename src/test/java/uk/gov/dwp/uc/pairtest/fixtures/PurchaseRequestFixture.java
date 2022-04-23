@@ -15,7 +15,7 @@ public class PurchaseRequestFixture {
                 .getRequestArray();
 
         return PurchaseRequest.builder()
-                .accountId(1)
+                .accountId(1l)
                 .tickets(requestArray)
                 .build();
     }
@@ -26,7 +26,7 @@ public class PurchaseRequestFixture {
                 .getRequestArray();
 
         return PurchaseRequest.builder()
-                .accountId(0)
+                .accountId(0l)
                 .tickets(requestArray)
                 .build();
     }

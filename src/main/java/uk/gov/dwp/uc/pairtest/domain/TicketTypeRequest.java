@@ -1,20 +1,21 @@
 package uk.gov.dwp.uc.pairtest.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
  * Immutable Object
  */
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class TicketTypeRequest {
 
     @Min(value = 1, message = "number of tickets cannot be less than 1")
-    private int noOfTickets;
+    @NotNull
+    private Integer noOfTickets;
     private Type type;
 
     public TicketTypeRequest(Type type, int noOfTickets) {

@@ -1,0 +1,32 @@
+-------------------------------------------------------------------------------
+Test set: uk.gov.dwp.uc.pairtest.controller.TicketPurchaseControllerTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 11.594 s <<< FAILURE! - in uk.gov.dwp.uc.pairtest.controller.TicketPurchaseControllerTest
+purchaseThrowsBadRequestWithValidPurchaseRequest  Time elapsed: 0.613 s  <<< ERROR!
+org.springframework.web.util.NestedServletException: 
+Request processing failed; nested exception is org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of `uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest` (no Creators, like default constructor, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
+ at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 14] (through reference chain: uk.gov.dwp.uc.pairtest.domain.PurchaseRequest["tickets"]->java.lang.Object[][0])
+	at uk.gov.dwp.uc.pairtest.controller.TicketPurchaseControllerTest.purchaseThrowsBadRequestWithValidPurchaseRequest(TicketPurchaseControllerTest.java:43)
+Caused by: org.springframework.http.converter.HttpMessageConversionException: 
+Type definition error: [simple type, class uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of `uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest` (no Creators, like default constructor, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
+ at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 14] (through reference chain: uk.gov.dwp.uc.pairtest.domain.PurchaseRequest["tickets"]->java.lang.Object[][0])
+	at uk.gov.dwp.uc.pairtest.controller.TicketPurchaseControllerTest.purchaseThrowsBadRequestWithValidPurchaseRequest(TicketPurchaseControllerTest.java:43)
+Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: 
+Cannot construct instance of `uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest` (no Creators, like default constructor, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
+ at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 14] (through reference chain: uk.gov.dwp.uc.pairtest.domain.PurchaseRequest["tickets"]->java.lang.Object[][0])
+	at uk.gov.dwp.uc.pairtest.controller.TicketPurchaseControllerTest.purchaseThrowsBadRequestWithValidPurchaseRequest(TicketPurchaseControllerTest.java:43)
+
+purchaseReturn_200_WithValidPurchaseRequest  Time elapsed: 0.015 s  <<< ERROR!
+org.springframework.web.util.NestedServletException: 
+Request processing failed; nested exception is org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of `uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest` (no Creators, like default constructor, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
+ at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 14] (through reference chain: uk.gov.dwp.uc.pairtest.domain.PurchaseRequest["tickets"]->java.lang.Object[][0])
+	at uk.gov.dwp.uc.pairtest.controller.TicketPurchaseControllerTest.purchaseReturn_200_WithValidPurchaseRequest(TicketPurchaseControllerTest.java:58)
+Caused by: org.springframework.http.converter.HttpMessageConversionException: 
+Type definition error: [simple type, class uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of `uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest` (no Creators, like default constructor, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
+ at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 14] (through reference chain: uk.gov.dwp.uc.pairtest.domain.PurchaseRequest["tickets"]->java.lang.Object[][0])
+	at uk.gov.dwp.uc.pairtest.controller.TicketPurchaseControllerTest.purchaseReturn_200_WithValidPurchaseRequest(TicketPurchaseControllerTest.java:58)
+Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: 
+Cannot construct instance of `uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest` (no Creators, like default constructor, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
+ at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 14] (through reference chain: uk.gov.dwp.uc.pairtest.domain.PurchaseRequest["tickets"]->java.lang.Object[][0])
+	at uk.gov.dwp.uc.pairtest.controller.TicketPurchaseControllerTest.purchaseReturn_200_WithValidPurchaseRequest(TicketPurchaseControllerTest.java:58)
+

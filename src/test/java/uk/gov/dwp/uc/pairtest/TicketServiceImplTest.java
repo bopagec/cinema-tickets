@@ -90,7 +90,6 @@ public class TicketServiceImplTest {
 
         ticketService.purchaseTickets(1l, requestArray);
         ArgumentCaptor<Integer> totalArgCapture = ArgumentCaptor.forClass(Integer.class);
-
         verify(ticketPaymentService).makePayment(eq(1l), totalArgCapture.capture());
         Assertions.assertEquals(60, totalArgCapture.getValue());
     }

@@ -1,0 +1,4 @@
+uk\gov\dwp\uc\pairtest\TicketServiceImplTest.class
+uk\gov\dwp\uc\pairtest\controller\TicketPurchaseControllerTest.class
+uk\gov\dwp\uc\pairtest\fixtures\PurchaseRequestFixture.class
+uk\gov\dwp\uc\pairtest\fixtures\TicketTypeRequestFixture.class
