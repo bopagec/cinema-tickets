@@ -3,12 +3,11 @@ package uk.gov.dwp.uc.pairtest.rules;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest;
 import uk.gov.dwp.uc.pairtest.exception.InvalidPurchaseException;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest.*;
+import static uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest.Type;
 
 public class ChildAndInfantTicketSpecification extends AbstractSpecification<List<TicketTypeRequest>> {
     @Override
