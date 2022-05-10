@@ -51,6 +51,7 @@ Provide a working implementation of a TicketService that:
 - Rejects any invalid ticket purchase requests. It is up to you to identify what should be deemed as an invalid purchase request.
 
 ## Implementation
+
 Some notes
 
 - usage of Specification Design Pattern to support Business Rules
